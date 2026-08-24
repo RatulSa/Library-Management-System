@@ -24,6 +24,10 @@ const Book = sequelize.define(
             type: DataTypes.DECIMAL(10, 2),
             allowNull: true,
         },
+        subject:{
+            type: DataTypes.STRING(150),
+            allowNull: false,
+        }
     },
     {
         tableName: "Books",

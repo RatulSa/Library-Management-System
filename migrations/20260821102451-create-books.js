@@ -23,6 +23,10 @@ module.exports = {
                 type: Sequelize.DECIMAL(10, 2),
                 allowNull: true,
             },
+            subject:{
+                type: Sequelize.STRING(150),
+                allowNull: false,
+            },
         });
     },
 
