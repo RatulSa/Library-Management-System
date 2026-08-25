@@ -1,6 +1,6 @@
 const express = require("express");
 require('dotenv').config();
-// const logger = require('./utils/logger');
+const logger = require('./utils/logger');
 const sequelize = require('./config/db');
 
 //routes import
@@ -16,7 +16,7 @@ const PORT = 3000;
 const pool = require('./config/db');
 const erroHandler = require("./middlewares/errorHandeler");
 app.use(express.json());
-// app.use(logger);
+app.use(logger);
 
 
 app.use('/books',booksRoutes);
