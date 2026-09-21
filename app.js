@@ -1,7 +1,9 @@
 const express = require("express");
+const { connectRedis } = require("./config/redis");
 require('dotenv').config();
 const logger = require('./utils/logger');
 const sequelize = require('./config/db');
+const cors = require("cors");
 
 //routes import
 const booksRoutes = require('./routers/booksRoute');
@@ -15,6 +17,7 @@ const app = express();
 const PORT = 3000;
 const pool = require('./config/db');
 const erroHandler = require("./middlewares/errorHandeler");
+app.use(cors());
 app.use(express.json());
 app.use(logger);
 
@@ -32,10 +35,13 @@ app.use(erroHandler);
 //     res.end("hello");
 // })
 
+// connectRedis();
     
  const connection = async ()=>{
 
     try {
+        await connectRedis();
+        console.log("Redis is connected");
         await sequelize.authenticate();
         console.log("DB is connected");
         
